@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="euerka_diary" />
+        <module name="eureka_admin" />
+        <module name="eureka_server" />
+        <module name="eureka_zuul" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="admin" target="1.8" />
+      <module name="diary" target="1.8" />
+      <module name="eureka_config" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="admin" options="-parameters" />
+      <module name="diary" options="-parameters" />
+      <module name="euerka_diary" options="-parameters" />
+      <module name="eureka_admin" options="-parameters" />
+      <module name="eureka_config" options="-parameters" />
+      <module name="eureka_server" options="-parameters" />
+      <module name="eureka_zuul" options="-parameters" />
+    </option>
+  </component>
+</project>

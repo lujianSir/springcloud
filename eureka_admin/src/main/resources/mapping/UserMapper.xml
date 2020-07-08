@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lujian.eureka_admin.mapper.UserMapper">
+
+    <!--添加用户  -->
+    <insert id="insertUserMessage" parameterType="com.lujian.eureka_admin.entity.User">
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username != null and username!=''">
+                username,
+            </if>
+            <if test="utelphone != null and utelphone !=''">
+                utelphone,
+            </if>
+            <if test="password != null and password !=''">
+                password,
+            </if>
+            <if test="uposition != null and uposition !=''">
+                uposition,
+            </if>
+            <if test="upic != null and upic!=''">
+                upic,
+            </if>
+            <if test="wxid != null and wxid!=''">
+                wxid,
+            </if>
+            <if test="creattime != null and creattime!=''">
+                creattime,
+            </if>
+
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="username != null and username!=''">
+                #{username},
+            </if>
+            <if test="utelphone != null and utelphone !=''">
+                #{utelphone},
+            </if>
+            <if test="password != null and password !=''">
+                #{password},
+            </if>
+            <if test="uposition != null and uposition !=''">
+                #{uposition},
+            </if>
+            <if test="upic != null and upic!=''">
+                #{upic},
+            </if>
+            <if test="wxid != null and wxid!=''">
+                #{wxid},
+            </if>
+            <if test="creattime != null and creattime!=''">
+                #{creattime},
+            </if>
+
+        </trim>
+    </insert>
+
+    <!-- 查询用户是否存在-->
+    <select id="queryUserMessageByTel" resultType="com.lujian.eureka_admin.entity.User">
+        select * from user where utelphone =#{utelphone}
+    </select>
+
+    <!--修改用户信息-->
+    <update id="updateUserMessage" parameterType="com.lujian.eureka_admin.entity.User">
+        update user
+        <set>
+            <if test="username != null">
+                username=#{username},
+            </if>
+            <if test="password != null and password !=''">
+                password=#{password},
+            </if>
+            <if test="uposition != null">
+                uposition=#{uposition},
+            </if>
+            <if test="upic != null and upic!=''">
+                upic=#{upic},
+            </if>
+            <if test="wxid != null and wxid!=''">
+                wxid=#{wxid},
+            </if>
+            <if test="creattime != null and creattime!=''">
+                creattime=#{creattime},
+            </if>
+            <if test="frequency != null and frequency!=''">
+                frequency=#{frequency},
+            </if>
+        </set>
+        <where>
+            <if test="uid != null and uid!=''">
+                and uid=#{uid}
+            </if>
+            <if test="utelphone != null and utelphone !=''">
+                and utelphone=#{utelphone}
+            </if>
+        </where>
+    </update>
+
+    <!-- 通过项目ID以及用户ID查询用户 -->
+    <select id="queryUserByUidAndPid" resultType="com.lujian.eureka_admin.entity.User">
+		   SELECT
+			b.*,
+			case when b.uid=#{uid} then 1 else 0 end currentuser
+			FROM
+				projectuser a
+			LEFT JOIN user b ON a.uid = b.uid
+			WHERE
+				a.pid = #{pid}
+   			ORDER BY b.creattime DESC
+   </select>
+
+    <!-- 通过手机或者ID查询用户信息 -->
+    <select id="queryUserByUidOrTel" resultType="com.lujian.eureka_admin.entity.User">
+        select * from user
+        <where>
+            <if test="uid !=null and  uid !=''">
+                and uid=#{uid}
+            </if>
+            <if test="utelphone !=null and utelphone !=''">
+                and utelphone=#{utelphone}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryImageUrls" resultType="com.lujian.eureka_admin.entity.ImageUrl">
+        select  * from imageurl
+    </select>
+</mapper>
