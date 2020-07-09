@@ -9,6 +9,10 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:9000/eureka/
 
+feign:  #开启熔断保护
+  hystrix:
+    enabled: true
+
 spring:
   application:
     name: eureka-admin
