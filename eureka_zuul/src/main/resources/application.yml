@@ -2,7 +2,7 @@ spring:
   application:
     name : eureka-zuul
 server:
-  port : 7000
+  port : 7001
 
 eureka:
   client:
