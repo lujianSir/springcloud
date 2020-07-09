@@ -2,7 +2,8 @@ package com.lujian.euerka_diary.service;
 
 import com.lujian.euerka_diary.entity.Daily;
 import com.lujian.euerka_diary.entity.DailyStatistic;
-import com.sun.org.glassfish.external.statistics.Statistic;
+import com.lujian.euerka_diary.entity.Statistic;
+
 
 import java.util.List;
 

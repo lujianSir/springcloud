@@ -2,7 +2,7 @@ package com.lujian.euerka_diary.mapper;
 
 import com.lujian.euerka_diary.entity.Daily;
 import com.lujian.euerka_diary.entity.DailyStatistic;
-import com.sun.org.glassfish.external.statistics.Statistic;
+import com.lujian.euerka_diary.entity.Statistic;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

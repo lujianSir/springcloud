@@ -5,9 +5,9 @@ import com.alibaba.fastjson.JSONObject;
 import com.lujian.euerka_diary.entity.Daily;
 import com.lujian.euerka_diary.entity.DailyStatistic;
 import com.lujian.euerka_diary.entity.Equipment;
+import com.lujian.euerka_diary.entity.Statistic;
 import com.lujian.euerka_diary.mapper.StatisticMapper;
 import com.lujian.euerka_diary.service.StatisticService;
-import com.sun.org.glassfish.external.statistics.Statistic;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
