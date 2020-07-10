@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="euerka_clock" />
         <module name="euerka_diary" />
         <module name="eureka_admin" />
         <module name="eureka_server" />
@@ -22,6 +23,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="admin" options="-parameters" />
       <module name="diary" options="-parameters" />
+      <module name="euerka_clock" options="-parameters" />
       <module name="euerka_diary" options="-parameters" />
       <module name="eureka_admin" options="-parameters" />
       <module name="eureka_config" options="-parameters" />

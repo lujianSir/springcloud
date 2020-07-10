@@ -19,3 +19,7 @@ zuul:
       path: /diary/**
       serviceId: eureka-diary
 
+    eureka-clock:
+      path: /diary/**
+      serviceId: eureka-clock
+

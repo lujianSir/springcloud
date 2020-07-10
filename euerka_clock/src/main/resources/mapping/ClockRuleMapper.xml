@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lujian.euerka_clock.mapper.ClockRuleMapper">
+    <!--添加位置信息-->
+    <insert id="insertAddreeMessage" parameterType="com.lujian.euerka_clock.entity.AddressMessage" useGeneratedKeys="true"
+            keyProperty="amid">
+        insert into addressmessage
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="amname != null and amname!=''">
+                amname,
+            </if>
+            <if test="amrange != null and amrange !=''">
+                amrange,
+            </if>
+            <if test="amdetail != null and amdetail !=''">
+                amdetail,
+            </if>
+            <if test="amlatitude != null and amlatitude!=''">
+                amlatitude,
+            </if>
+            <if test="amlongitude != null and amlongitude!=''">
+                amlongitude,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="amname != null and amname!=''">
+                #{amname},
+            </if>
+            <if test="amrange != null and amrange !=''">
+                #{amrange},
+            </if>
+            <if test="amdetail != null and amdetail !=''">
+                #{amdetail},
+            </if>
+            <if test="amlatitude != null and amlatitude!=''">
+                #{amlatitude},
+            </if>
+            <if test="amlongitude != null and amlongitude!=''">
+                #{amlongitude},
+            </if>
+        </trim>
+    </insert>
+
+    <!--修改位置信息-->
+    <update id="updateAddreeMessageByAmId" parameterType="com.lujian.euerka_clock.entity.AddressMessage">
+        update addressmessage
+        <set>
+            <if test="amname != null and amname!=''">
+                amname=#{amname},
+            </if>
+            <if test="amrange != null and amrange !=''">
+                amrange=#{amrange},
+            </if>
+            <if test="amdetail != null and amdetail !=''">
+                amdetail=#{amdetail},
+            </if>
+            <if test="amlatitude != null and amlatitude!=''">
+                amlatitude=#{amlatitude},
+            </if>
+            <if test="amlongitude != null and amlongitude!=''">
+                amlongitude=#{amlongitude},
+            </if>
+        </set>
+        where amid=#{amid}
+    </update>
+
+    <!--删除位置信息-->
+    <delete id="deleteAddreeMessageByAmId" parameterType="com.lujian.euerka_clock.entity.AddressMessage">
+        delete from addressmessage where amid=#{amid}
+    </delete>
+
+    <!--查询位置信息-->
+    <select id="queryAddreeMessageByAmId" resultType="com.lujian.euerka_clock.entity.AddressMessage">
+        select *from addressmessage where amid=#{amid}
+    </select>
+
+    <!--通过企业的ID和用户的ID判断用户是否已经有绑定的打卡-->
+    <select id="queryRuleUserByUidAndCid" resultType="com.lujian.euerka_clock.entity.RuleUser">
+        SELECT
+        a.*, b.username,c.crname
+        FROM
+        ruleuser a
+        LEFT JOIN USER b ON a.uid = b.uid LEFT JOIN clockrule c on a.crid=c.crid where a.cid=#{cid} and a.uid in
+        <foreach collection="users" item="uid" open="(" close=")" separator=",">
+            #{uid}
+        </foreach>
+    </select>
+
+    <!--通过企业的ID和用户的ID判断用户是否已经有绑定的打卡-->
+    <select id="queryRuleUserListByUidAndCid" resultType="com.lujian.euerka_clock.entity.RuleUser">
+        SELECT
+        a.*, b.username,c.crname
+        FROM
+        ruleuser a
+        LEFT JOIN USER b ON a.uid = b.uid LEFT JOIN clockrule c on a.crid=c.crid where a.cid=#{cid} and a.uid in
+        <foreach item="item" collection="list" separator="," open="(" close=")" index="">
+            #{item}
+        </foreach>
+    </select>
+
+    <!--添加打卡规则-->
+    <insert id="insertClockRule" parameterType="com.lujian.euerka_clock.entity.ClockRule" useGeneratedKeys="true"
+            keyProperty="crid">
+        insert into clockrule
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="cid != null and cid!=''">
+                cid,
+            </if>
+            <if test="crname != null and crname !=''">
+                crname,
+            </if>
+            <if test="crstyle != null and crstyle !=''">
+                crstyle,
+            </if>
+            <if test="amids != null and amids!=''">
+                amids,
+            </if>
+            <if test="userrulestyle != null and userrulestyle!=''">
+                userrulestyle,
+            </if>
+            <if test="users != null and users!=''">
+                users,
+            </if>
+            <if test="deptids != null and deptids!=''">
+                deptids,
+            </if>
+            <if test="firsttime != null and firsttime!=''">
+                firsttime,
+            </if>
+            <if test="sencondtime != null and sencondtime!=''">
+                sencondtime,
+            </if>
+            <if test="tsstyle != null and tsstyle!=''">
+                tsstyle,
+            </if>
+            <if test="threetime != null and threetime!=''">
+                threetime,
+            </if>
+            <if test="fourtime != null and fourtime!=''">
+                fourtime,
+            </if>
+            <if test="ruledata != null and ruledata!=''">
+                ruledata,
+            </if>
+            <if test="holidaystatus != null and holidaystatus!=''">
+                holidaystatus,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="cid != null and cid!=''">
+                #{cid},
+            </if>
+            <if test="crname != null and crname !=''">
+                #{crname},
+            </if>
+            <if test="crstyle != null and crstyle !=''">
+                #{crstyle},
+            </if>
+            <if test="amids != null and amids!=''">
+                #{amids},
+            </if>
+            <if test="userrulestyle != null and userrulestyle!=''">
+                #{userrulestyle},
+            </if>
+            <if test="users != null and users!=''">
+                #{users},
+            </if>
+            <if test="deptids != null and deptids!=''">
+                #{deptids},
+            </if>
+            <if test="firsttime != null and firsttime!=''">
+                #{firsttime},
+            </if>
+            <if test="sencondtime != null and sencondtime!=''">
+                #{sencondtime},
+            </if>
+            <if test="tsstyle != null and tsstyle!=''">
+                #{tsstyle},
+            </if>
+            <if test="threetime != null and threetime!=''">
+                #{threetime},
+            </if>
+            <if test="fourtime != null and fourtime!=''">
+                #{fourtime},
+            </if>
+            <if test="ruledata != null and ruledata!=''">
+                #{ruledata},
+            </if>
+            <if test="holidaystatus != null and holidaystatus!=''">
+                #{holidaystatus},
+            </if>
+        </trim>
+    </insert>
+
+    <!--批量添加用户与打卡-->
+    <insert id="insertRuleUsers" parameterType="com.lujian.euerka_clock.entity.RuleUser">
+        insert into ruleuser (crid,uid,cid)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.crid},#{item.uid},#{item.cid})
+        </foreach>
+    </insert>
+
+    <!--查询当前用户打卡规则-->
+    <select id="queryClockRuleByUidAndCid" resultType="com.lujian.euerka_clock.entity.ClockRule">
+        SELECT
+            a.*, b.uid
+        FROM
+            clockrule a
+        LEFT JOIN ruleuser b ON a.crid = b.crid
+        WHERE
+            a.cid = #{cid}
+        AND b.uid = #{uid}
+    </select>
+
+    <!--通过多个ID查询考勤地址-->
+    <select id="queryAddressMessageByAmids" resultType="com.lujian.euerka_clock.entity.AddressMessage">
+        select * from addressmessage where amid in
+        <foreach collection="amids" item="amid" open="(" close=")" separator=",">
+            #{amid}
+        </foreach>
+    </select>
+</mapper>

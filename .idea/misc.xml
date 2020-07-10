@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/eureka_zuul/pom.xml" />
         <option value="$PROJECT_DIR$/eureka_admin/pom.xml" />
         <option value="$PROJECT_DIR$/euerka_diary/pom.xml" />
+        <option value="$PROJECT_DIR$/euerka_clock/pom.xml" />
       </list>
     </option>
   </component>

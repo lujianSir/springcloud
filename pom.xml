@@ -13,6 +13,7 @@
         <module>euerka_diary</module>
         <module>eureka_admin</module>
         <module>eureka_server</module>
+        <module>euerka_clock</module>
     </modules>
 
 </project>
