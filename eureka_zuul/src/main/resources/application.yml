@@ -10,16 +10,21 @@ eureka:
       defaultZone : http://localhost:9000/eureka/
 
 zuul:
+  sensitive-headers: Access-Control-Allow-Origin
+  ignored-headers: Access-Control-Allow-Origin,H-APP-Id,Token,APPToken
+
   routes:
     eureka-admin :
       path : /admin/**
       serviceId : eureka-admin
+
 
     eureka-diary:
       path: /diary/**
       serviceId: eureka-diary
 
     eureka-clock:
-      path: /diary/**
+      path: /clock/**
       serviceId: eureka-clock
+
 
